@@ -18,7 +18,7 @@ const TodoList = () => {
   return (
     <section className="flex justify-between md:flex-row flex-col flex-wrap gap-y-4 mt-9">
       {filterTodos.length === 0 ? (
-        <div className="text-center w-full mt-10 font-semibold text-2xl text-[#252525]">
+        <div className="text-center w-full mt-10 font-semibold text-2xl">
           یادداشتی وجود ندارد...
         </div>
       ) : (
