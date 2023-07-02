@@ -90,6 +90,7 @@ const Modal = ({ setActive, type, todo, active }) => {
           </h3>
           <div className="mt-5 mb-8">
             <input
+              placeholder="عنوان ..."
               type="text"
               id="title"
               name="title"
@@ -104,6 +105,7 @@ const Modal = ({ setActive, type, todo, active }) => {
           </div>
           <div className="mb-8">
             <textarea
+              placeholder="توضیحات ..."
               id="description"
               name="description"
               {...formik.getFieldProps("description")}
@@ -118,7 +120,9 @@ const Modal = ({ setActive, type, todo, active }) => {
           <div className="flex items-center gap-x-2">
             <button
               disabled={!formik.isValid}
-              className="w-2/3 py-3 bg-blue-900 text-white hover:bg-blue-800 shadow rounded-xl"
+              className={`${
+                !formik.isValid ? "opacity-50" : "opacity-100"
+              } w-2/3 py-3 bg-blue-900 text-white hover:bg-blue-800 shadow rounded-xl`}
             >
               {type === "add" ? "ثبت یادداشت" : "ویرایش یادداشت"}
             </button>
