@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Todo from "./Todo";
 
-const TodoList = () => {
+const TodoList = ({ search }) => {
   const { todoList, filterStatus } = useSelector((state) => state.todo);
   const [todayTask, setTodayTask] = useState([]);
-  const sortTodos = [...todoList];
+  // filter search item
+  const searchTodoList = todoList.filter((todo) =>
+    todo.content.title.toLowerCase().includes(search.toLowerCase())
+  );
+  const sortTodos = [...searchTodoList];
 
   sortTodos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
@@ -18,7 +22,7 @@ const TodoList = () => {
     }
   });
 
-  // filter todoTask
+  // filter todayTask
   useEffect(() => {
     if (todoList) {
       const filterToday = filterTodos.filter(
@@ -33,7 +37,7 @@ const TodoList = () => {
     <section className="py-5">
       {/* today task */}
       <div className="w-full">
-        <p>یادداشت های امروز</p>
+        <p className="lg:px-0 md:px-3 px-5 mt-1">یادداشت های امروز</p>
         <hr />
         <div className="flex justify-between md:flex-row flex-col flex-wrap gap-y-4 mt-9">
           {todayTask.length === 0 ? (
@@ -49,7 +53,7 @@ const TodoList = () => {
       </div>
       {/* all tasks */}
       <div className="w-full">
-        <p>همه یادداشت ها</p>
+        <p className="lg:px-0 md:px-3 px-5 mt-5">همه یادداشت ها</p>
         <hr />
         <div className="flex justify-between md:flex-row flex-col flex-wrap gap-y-4 mt-9">
           {filterTodos.length === 0 ? (

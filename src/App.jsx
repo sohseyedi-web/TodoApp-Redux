@@ -24,10 +24,12 @@ function App() {
     setDark(dark === "dark" ? "light" : "dark");
   };
 
+  const [search , setSearch] = useState("")
+
   return (
     <section className="max-w-4xl container mx-auto pt-10">
-      <TodoHeader />
-      <TodoList />
+      <TodoHeader search={search} setSearch={setSearch}/>
+      <TodoList search={search} setSearch={setSearch}/>
       <div
         onClick={handleThemeSwitch}
         className="fixed left-4 bottom-4 cursor-pointer transition-all duration-300 hover:scale-105 scale-100"
