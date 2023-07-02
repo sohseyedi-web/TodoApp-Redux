@@ -24,7 +24,6 @@ function App() {
     setDark(dark === "dark" ? "light" : "dark");
   };
 
-  console.log(dark);
   return (
     <section className="max-w-4xl container mx-auto pt-10">
       <TodoHeader />
